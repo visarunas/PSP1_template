@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PSP1
+{
+    class WeaponSword : Weapon
+    {
+
+        protected override int CalculateBaseDamage(Entity attacker)
+        {
+            return random.Next(1, 10) + (10 + attacker.STRENGTH);
+        }
+
+        protected override int CalculateDefence(Entity target)
+        {
+            return random.Next(1, 6) + target.DEFENCE + target.SLICE_DEFENCE + target.LUCK;
+        }
+
+    }
+}
