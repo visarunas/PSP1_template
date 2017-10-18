@@ -15,6 +15,8 @@ namespace PSP1
         Entity player = new Entity(new WeaponSword());
         Entity enemy = new Entity(new WeaponSpear());
 
+        Random random = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -25,12 +27,12 @@ namespace PSP1
             richTextBox1.Text = "";
 
             richTextBox1.Text += "Attacking enemy\n";
-            var damage = player.weapon.GetAttackDamage(player, enemy);
+            var damage = player.weapon.GetAttackDamage(player, enemy, random);
             richTextBox1.Text += "Damage to enemy: " + damage + "\n";
             enemy.health -= damage;
 
             richTextBox1.Text += "Enemy attacking Player\n";
-            damage = enemy.weapon.GetAttackDamage(enemy, player);
+            damage = enemy.weapon.GetAttackDamage(enemy, player, random);
             richTextBox1.Text += "Damage to Player: " + damage + "\n";
             player.health -= damage;
 
