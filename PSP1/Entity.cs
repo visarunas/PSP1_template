@@ -12,17 +12,17 @@ namespace PSP1
         public int DEFENCE = 4;
         public int SLICE_DEFENCE = 2;
         public int PIERCE_DEFENCE = 8;
-        public int DODGE = 3;
+        public int DODGE = 5;
         public int LUCK = 1;
         public int ATTACK = 6;
+        public int BLOCK = 2;
+        public int SHOOTING = 5;
 
         public int health = 100;
 
-        public Weapon weapon;
 
-        public Entity(Weapon weapon)
+        public Entity()
         {
-            this.weapon = weapon;
         }
     }
 }

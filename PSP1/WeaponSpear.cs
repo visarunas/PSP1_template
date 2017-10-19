@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSP1
 {
-    class WeaponSpear : Weapon
+    class WeaponSpear : WeaponB
     {
 
         protected override int CalculateBaseDamage(Entity attacker, Random random)
@@ -14,10 +14,19 @@ namespace PSP1
             return random.Next(1, 10) + (10 + attacker.STRENGTH);
         }
 
-        protected override int CalculateDefence(Entity target, Random random)
+        protected override int CalculateBlockPoints(int damage, Entity target, Random random)
         {
-            return random.Next(1, 6) + target.DEFENCE + target.SLICE_DEFENCE + target.LUCK;
+            return random.Next(1, 4) + (target.DEFENCE);
         }
 
+        protected override int CalculateDefence(Entity target, Random random)
+        {
+            return random.Next(1, 4) + target.DEFENCE + target.PIERCE_DEFENCE + target.LUCK;
+        }
+
+        protected override bool DoesWeaponBlock(int damage, Entity target, Random random)
+        {
+            return random.Next(1, 6) > 4;
+        }
     }
 }

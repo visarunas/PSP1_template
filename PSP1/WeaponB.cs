@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace PSP1
 {
-    abstract class Weapon
+    abstract class WeaponB
     {
-        protected Random random = new Random();
 
         public int GetAttackDamage(Entity attacker, Entity target, Random random)
         {
@@ -28,5 +27,20 @@ namespace PSP1
         }
         protected abstract int CalculateBaseDamage(Entity attacker, Random random);
         protected abstract int CalculateDefence(Entity target, Random random);
+
+        public int GetBlockPoints(int damage, Entity target, Random random)
+        {
+            if (DoesWeaponBlock(damage, target, random))
+            {
+                return CalculateBlockPoints(damage, target, random);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        protected abstract bool DoesWeaponBlock(int damage, Entity target, Random random);
+        protected abstract int CalculateBlockPoints(int damage, Entity target, Random random);
     }
 }
